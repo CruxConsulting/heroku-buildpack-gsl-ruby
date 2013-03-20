@@ -19,7 +19,7 @@ class LanguagePack::Ruby < LanguagePack::Base
   JVM_BASE_URL        = "http://heroku-jvm-langpack-java.s3.amazonaws.com"
   JVM_VERSION         = "openjdk7-latest"
 
-  GSL_VENDOR_URL = "http://vulcan-crux.herokuapp.com/output/194cd20b-0c5a-4c95-a627-30facfc726df"
+  GSL_VENDOR_URL = "http://vulcan-crux.herokuapp.com/output/102eaf5f-9bcf-45b5-a5dc-2ba4f604fe1e"
 
   # detects if this is a valid Ruby app
   # @return [Boolean] true if it's a Ruby app
@@ -78,8 +78,8 @@ class LanguagePack::Ruby < LanguagePack::Base
     setup_profiled
     allow_git do
       install_gsl
-      run("cp -R vendor/gsl-1-enable-shared /app/vendor/gsl")
-      run("cp -R vendor/gsl-1-enable-shared /app/vendor/gsl-1-enable-shared")
+      run("cp -R vendor/gsl-1 /app/vendor/gsl")
+      run("cp -R vendor/gsl-1 /app/vendor/gsl-1")
       install_language_pack_gems
       build_bundler
       create_database_yml
@@ -93,11 +93,11 @@ private
   # the base PATH environment variable to be used
   # @return [String] the resulting PATH
   def default_path
-    "bin:#{slug_vendor_base}/bin:/usr/local/bin:/usr/bin:/bin:/app/vendor/gsl-1-enable-shared/bin"
+    "bin:#{slug_vendor_base}/bin:/usr/local/bin:/usr/bin:/bin:/app/vendor/gsl-1/bin"
   end
 
   def ld_path
-    "/app/vendor/gsl-1-enable-shared/lib"
+    "/app/vendor/gsl-1/lib"
   end
 
   # the relative path to the bundler directory of gems
@@ -356,7 +356,7 @@ ERROR
 
   def install_gsl
     topic("Installing gsl")
-    bin_dir = "vendor/gsl-1-enable-shared"
+    bin_dir = "vendor/gsl-1"
     FileUtils.mkdir_p bin_dir
     Dir.chdir(bin_dir) do |dir|
       run("curl #{GSL_VENDOR_URL} -s -o - | tar xzf -")
