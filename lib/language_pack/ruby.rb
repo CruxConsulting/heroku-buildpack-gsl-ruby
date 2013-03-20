@@ -19,7 +19,7 @@ class LanguagePack::Ruby < LanguagePack::Base
   JVM_BASE_URL        = "http://heroku-jvm-langpack-java.s3.amazonaws.com"
   JVM_VERSION         = "openjdk7-latest"
 
-  GSL_VENDOR_URL = "http://vulcan-crux.herokuapp.com/output/102eaf5f-9bcf-45b5-a5dc-2ba4f604fe1e"
+  GSL_VENDOR_URL = "http://vulcan-crux.herokuapp.com/output/c47a1204-70a2-4c85-b1c5-142b95e52daa"
 
   # detects if this is a valid Ruby app
   # @return [Boolean] true if it's a Ruby app
