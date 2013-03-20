@@ -18,8 +18,8 @@ class LanguagePack::Ruby < LanguagePack::Base
   NODE_JS_BINARY_PATH = "node-#{NODE_VERSION}"
   JVM_BASE_URL        = "http://heroku-jvm-langpack-java.s3.amazonaws.com"
   JVM_VERSION         = "openjdk7-latest"
-  
-  GSL_VENDOR_URL = "https://s3.amazonaws.com/gsl_bin/gsl-1.15.tgz"
+
+  GSL_VENDOR_URL = "http://vulcan-crux.herokuapp.com/output/102eaf5f-9bcf-45b5-a5dc-2ba4f604fe1e"
 
   # detects if this is a valid Ruby app
   # @return [Boolean] true if it's a Ruby app
@@ -95,7 +95,7 @@ private
   def default_path
     "bin:#{slug_vendor_base}/bin:/usr/local/bin:/usr/bin:/bin:/app/vendor/gsl-1/bin"
   end
-  
+
   def ld_path
     "/app/vendor/gsl-1/lib"
   end
@@ -612,7 +612,7 @@ params = CGI.parse(uri.query || "")
       end
     end
   end
-  
+
 	def bundler_cache
     "vendor/bundle"
   end
